@@ -1,0 +1,46 @@
+Ejemplo 2: Mecanismo de corrupcion (epsilon=0.25, threshold=2)
+============================================================
+Epsilon: 0.25
+Threshold T: 2
+Total de pasos: 39
+
+Pasos:
+    1. [state     ] Estado inicial (epsilon=0.25, T=2). Nodos de rango > 2 haran double sift.
+    2. [insert    ] [INTERMEDIO] Hoja 15 insertada, pre-combine.
+    3. [insert    ] Tras insertar 15. Verificar items [C].
+    4. [insert    ] [INTERMEDIO] Hoja 3 insertada, pre-combine.
+    5. [link      ] [INTERMEDIO] Link creado. Pre-sift: arbol con hijos intactos.
+    6. [combine   ] Combine completado.
+    7. [insert    ] Tras insertar 3. Verificar items [C].
+    8. [insert    ] [INTERMEDIO] Hoja 22 insertada, pre-combine.
+    9. [insert    ] Tras insertar 22. Verificar items [C].
+   10. [insert    ] [INTERMEDIO] Hoja 8 insertada, pre-combine.
+   11. [link      ] [INTERMEDIO] Link creado. Pre-sift: arbol con hijos intactos.
+   12. [combine   ] Combine completado.
+   13. [link      ] [INTERMEDIO] Link creado. Pre-sift: arbol con hijos intactos.
+   14. [combine   ] Combine completado.
+   15. [insert    ] Tras insertar 8. Verificar items [C].
+   16. [insert    ] [INTERMEDIO] Hoja 1 insertada, pre-combine.
+   17. [insert    ] Tras insertar 1. Verificar items [C].
+   18. [insert    ] [INTERMEDIO] Hoja 19 insertada, pre-combine.
+   19. [link      ] [INTERMEDIO] Link creado. Pre-sift: arbol con hijos intactos.
+   20. [combine   ] Combine completado.
+   21. [insert    ] Tras insertar 19. Verificar items [C].
+   22. [insert    ] [INTERMEDIO] Hoja 11 insertada, pre-combine.
+   23. [insert    ] Tras insertar 11. Verificar items [C].
+   24. [insert    ] [INTERMEDIO] Hoja 5 insertada, pre-combine.
+   25. [link      ] [INTERMEDIO] Link creado. Pre-sift: arbol con hijos intactos.
+   26. [combine   ] Combine completado.
+   27. [link      ] [INTERMEDIO] Link creado. Pre-sift: arbol con hijos intactos.
+   28. [combine   ] Combine completado.
+   29. [link      ] [INTERMEDIO] Link creado. Pre-sift: arbol con hijos intactos.
+   30. [sift      ] [INTERMEDIO] >>> DOUBLE SIFT: ronda 2 inicia. ckey puede subir y corromper items previos!
+   31. [sift      ] >>> DOUBLE SIFT completado. Items de ronda 1 ahora tienen ckey mayor: CORROMPIDOS.
+   32. [combine   ] Combine completado.
+   33. [insert    ] Tras insertar 5. Verificar items [C].
+   34. [state     ] 8 elementos insertados. Items con [C] = corrompidos.
+   35. [deletemin ] deleteMin #1: ckey=3, real=1 [CORROMPIDO: extraido fuera de orden!]
+   36. [deletemin ] deleteMin #2: ckey=3, real=3 [limpio]
+   37. [deletemin ] deleteMin #3: ckey=8, real=5 [CORROMPIDO: extraido fuera de orden!]
+   38. [deletemin ] deleteMin #4: ckey=8, real=8 [limpio]
+   39. [state     ] Estado final tras 4 extracciones.

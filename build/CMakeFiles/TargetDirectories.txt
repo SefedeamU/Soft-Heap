@@ -1,0 +1,3 @@
+/home/sefedeam/Proyectos/EDA/build/CMakeFiles/softheap.dir
+/home/sefedeam/Proyectos/EDA/build/CMakeFiles/edit_cache.dir
+/home/sefedeam/Proyectos/EDA/build/CMakeFiles/rebuild_cache.dir

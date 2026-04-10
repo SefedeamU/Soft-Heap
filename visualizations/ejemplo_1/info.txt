@@ -1,0 +1,48 @@
+Ejemplo 1: Estructura del arbol (epsilon=0.03, threshold=5)
+============================================================
+Epsilon: 0.0312
+Threshold T: 5
+Total de pasos: 41
+
+Pasos:
+    1. [state     ] Estado inicial: heap vacio
+    2. [insert    ] [INTERMEDIO] Hoja insertada (clave 10). Antes de consolidar.
+    3. [insert    ] Estado estable tras insertar 10
+    4. [insert    ] [INTERMEDIO] Hoja insertada (clave 4). Antes de consolidar.
+    5. [link      ] [INTERMEDIO] Link: nuevo nodo interno creado (pre-sift). Hijos visibles como sub-arboles.
+    6. [combine   ] Combine completado. Sift movio items de hijo a padre.
+    7. [insert    ] Estado estable tras insertar 4
+    8. [insert    ] [INTERMEDIO] Hoja insertada (clave 7). Antes de consolidar.
+    9. [insert    ] Estado estable tras insertar 7
+   10. [insert    ] [INTERMEDIO] Hoja insertada (clave 2). Antes de consolidar.
+   11. [link      ] [INTERMEDIO] Link: nuevo nodo interno creado (pre-sift). Hijos visibles como sub-arboles.
+   12. [combine   ] Combine completado. Sift movio items de hijo a padre.
+   13. [link      ] [INTERMEDIO] Link: nuevo nodo interno creado (pre-sift). Hijos visibles como sub-arboles.
+   14. [combine   ] Combine completado. Sift movio items de hijo a padre.
+   15. [insert    ] Estado estable tras insertar 2
+   16. [insert    ] [INTERMEDIO] Hoja insertada (clave 8). Antes de consolidar.
+   17. [insert    ] Estado estable tras insertar 8
+   18. [insert    ] [INTERMEDIO] Hoja insertada (clave 13). Antes de consolidar.
+   19. [link      ] [INTERMEDIO] Link: nuevo nodo interno creado (pre-sift). Hijos visibles como sub-arboles.
+   20. [combine   ] Combine completado. Sift movio items de hijo a padre.
+   21. [insert    ] Estado estable tras insertar 13
+   22. [insert    ] [INTERMEDIO] Hoja insertada (clave 1). Antes de consolidar.
+   23. [insert    ] Estado estable tras insertar 1
+   24. [insert    ] [INTERMEDIO] Hoja insertada (clave 6). Antes de consolidar.
+   25. [link      ] [INTERMEDIO] Link: nuevo nodo interno creado (pre-sift). Hijos visibles como sub-arboles.
+   26. [combine   ] Combine completado. Sift movio items de hijo a padre.
+   27. [link      ] [INTERMEDIO] Link: nuevo nodo interno creado (pre-sift). Hijos visibles como sub-arboles.
+   28. [combine   ] Combine completado. Sift movio items de hijo a padre.
+   29. [link      ] [INTERMEDIO] Link: nuevo nodo interno creado (pre-sift). Hijos visibles como sub-arboles.
+   30. [combine   ] Combine completado. Sift movio items de hijo a padre.
+   31. [insert    ] Estado estable tras insertar 6
+   32. [findmin   ] findMin: ckey=1, real=1 [limpio]
+   33. [sift      ] [INTERMEDIO] Nodo raiz quedo vacio. Pre-sift: estructura actual.
+   34. [sift      ] Post-sift: items recolectados de hijos.
+   35. [deletemin ] deleteMin #1: ckey=1, real=1 [limpio]
+   36. [sift      ] [INTERMEDIO] Nodo raiz quedo vacio. Pre-sift: estructura actual.
+   37. [sift      ] Post-sift: items recolectados de hijos.
+   38. [deletemin ] deleteMin #2: ckey=2, real=2 [limpio]
+   39. [sift      ] [INTERMEDIO] Nodo raiz quedo vacio. Pre-sift: estructura actual.
+   40. [sift      ] Post-sift: items recolectados de hijos.
+   41. [deletemin ] deleteMin #3: ckey=4, real=4 [limpio]

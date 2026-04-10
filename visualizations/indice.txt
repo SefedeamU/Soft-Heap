@@ -1,0 +1,41 @@
+============================================================
+  SOFT HEAP - Visualizaciones
+============================================================
+
+Estructura de carpetas:
+
+  ejemplo_1/
+    Titulo:  Estructura del arbol (epsilon=0.03, threshold=5)
+    Epsilon: 0.0312
+    Pasos:   41 (18 intermedios)
+
+  ejemplo_2/
+    Titulo:  Mecanismo de corrupcion (epsilon=0.25, threshold=2)
+    Epsilon: 0.25
+    Pasos:   39 (16 intermedios)
+
+  ejemplo_3/
+    Titulo:  Operacion Meld (epsilon=0.125, threshold=3)
+    Epsilon: 0.125
+    Pasos:   19 (2 intermedios)
+
+  ejemplo_4/
+    Titulo:  Tasa de corrupcion acotada (epsilon=0.1, threshold=4)
+    Epsilon: 0.1
+    Pasos:   43 (8 intermedios)
+
+  ejemplo_5/
+    Titulo:  Ordenamiento aproximado (epsilon=0.2, threshold=3)
+    Epsilon: 0.2
+    Pasos:   23 (0 intermedios)
+
+
+Total de imagenes generadas: 165
+
+Convenciones de color:
+  - Fondo BLANCO: paso final (estado estable)
+  - Fondo CREMA:  paso intermedio (transicion)
+  - Nodo AMARILLO: nodo involucrado en la operacion actual
+  - Item VERDE:   item limpio (ckey == clave real)
+  - Item ROJO:    item corrompido (ckey > clave real) [C]
+  - Bordes PURPURA: transicion/movimiento

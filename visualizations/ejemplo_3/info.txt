@@ -1,0 +1,26 @@
+Ejemplo 3: Operacion Meld (epsilon=0.125, threshold=3)
+============================================================
+Epsilon: 0.125
+Threshold T: 3
+Total de pasos: 19
+
+Pasos:
+    1. [state     ] Heap 1 vacio
+    2. [insert    ] Heap1: insertar 20
+    3. [insert    ] Heap1: insertar 5
+    4. [insert    ] Heap1: insertar 12
+    5. [insert    ] Heap1: insertar 17
+    6. [state     ] Heap 1 tiene {20,5,12,17}. Heap 2 tiene {15,3,8,25}.
+    7. [meld      ] [INTERMEDIO] Post-intercalado: listas de raices fusionadas por rango. Pre-combine.
+    8. [link      ] [INTERMEDIO] Meld: link de arboles del mismo rango (pre-sift).
+    9. [combine   ] Meld: combine completado.
+   10. [meld      ] Meld completado: 8 elementos en un solo heap.
+   11. [deletemin ] deleteMin: ckey=3 real=3
+   12. [deletemin ] deleteMin: ckey=5 real=5
+   13. [deletemin ] deleteMin: ckey=8 real=8
+   14. [deletemin ] deleteMin: ckey=12 real=12
+   15. [deletemin ] deleteMin: ckey=15 real=15
+   16. [deletemin ] deleteMin: ckey=17 real=17
+   17. [deletemin ] deleteMin: ckey=20 real=20
+   18. [deletemin ] deleteMin: ckey=25 real=25
+   19. [state     ] Heap vacio tras extraer todos los elementos.

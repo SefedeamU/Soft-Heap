@@ -1,0 +1,30 @@
+Ejemplo 5: Ordenamiento aproximado (epsilon=0.2, threshold=3)
+============================================================
+Epsilon: 0.2
+Threshold T: 3
+Total de pasos: 23
+
+Pasos:
+    1. [state     ] Estado inicial
+    2. [insert    ] Insertar 30
+    3. [insert    ] Insertar 10
+    4. [insert    ] Insertar 50
+    5. [insert    ] Insertar 20
+    6. [insert    ] Insertar 40
+    7. [insert    ] Insertar 5
+    8. [insert    ] Insertar 35
+    9. [insert    ] Insertar 15
+   10. [insert    ] Insertar 45
+   11. [insert    ] Insertar 25
+   12. [state     ] 10 elementos listos. Extraccion aproximadamente ordenada:
+   13. [deletemin ] deleteMin: ckey=5 real=5 [limpio]
+   14. [deletemin ] deleteMin: ckey=10 real=10 [limpio]
+   15. [deletemin ] deleteMin: ckey=15 real=15 [limpio]
+   16. [deletemin ] deleteMin: ckey=20 real=20 [limpio]
+   17. [deletemin ] deleteMin: ckey=25 real=25 [limpio]
+   18. [deletemin ] deleteMin: ckey=30 real=30 [limpio]
+   19. [deletemin ] deleteMin: ckey=35 real=35 [limpio]
+   20. [deletemin ] deleteMin: ckey=40 real=40 [limpio]
+   21. [deletemin ] deleteMin: ckey=45 real=45 [limpio]
+   22. [deletemin ] deleteMin: ckey=50 real=50 [limpio]
+   23. [state     ] Orden de extraccion (ckey->real): 5->5, 10->10, 15->15, 20->20, 25->25, 30->30, 35->35, 40->40, 45->45, 50->50

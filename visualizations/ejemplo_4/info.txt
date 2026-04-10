@@ -1,0 +1,50 @@
+Ejemplo 4: Tasa de corrupcion acotada (epsilon=0.1, threshold=4)
+============================================================
+Epsilon: 0.1
+Threshold T: 4
+Total de pasos: 43
+
+Pasos:
+    1. [state     ] Estado inicial (epsilon=0.1, T=4). Solo rango > 4 corrompe.
+    2. [insert    ] Insertar 50
+    3. [insert    ] Insertar 23
+    4. [insert    ] Insertar 7
+    5. [insert    ] Insertar 42
+    6. [insert    ] Insertar 15
+    7. [insert    ] Insertar 31
+    8. [insert    ] Insertar 3
+    9. [insert    ] Insertar 28
+   10. [insert    ] Insertar 19
+   11. [insert    ] Insertar 36
+   12. [insert    ] Insertar 11
+   13. [insert    ] Insertar 44
+   14. [insert    ] Insertar 6
+   15. [insert    ] Insertar 25
+   16. [insert    ] Insertar 38
+   17. [insert    ] Insertar 9
+   18. [state     ] 16 elementos. Tasa de corrupcion debe ser <= 10%.
+   19. [sift      ] [INTERMEDIO] Pre-sift: estructura antes de recolectar.
+   20. [sift      ] Post-sift: items recolectados.
+   21. [deletemin ] deleteMin #1: ckey=3 real=3
+   22. [sift      ] [INTERMEDIO] Pre-sift: estructura antes de recolectar.
+   23. [sift      ] Post-sift: items recolectados.
+   24. [deletemin ] deleteMin #2: ckey=6 real=6
+   25. [sift      ] [INTERMEDIO] Pre-sift: estructura antes de recolectar.
+   26. [sift      ] Post-sift: items recolectados.
+   27. [deletemin ] deleteMin #3: ckey=7 real=7
+   28. [sift      ] [INTERMEDIO] Pre-sift: estructura antes de recolectar.
+   29. [sift      ] Post-sift: items recolectados.
+   30. [deletemin ] deleteMin #4: ckey=9 real=9
+   31. [sift      ] [INTERMEDIO] Pre-sift: estructura antes de recolectar.
+   32. [sift      ] Post-sift: items recolectados.
+   33. [deletemin ] deleteMin #5: ckey=11 real=11
+   34. [sift      ] [INTERMEDIO] Pre-sift: estructura antes de recolectar.
+   35. [sift      ] Post-sift: items recolectados.
+   36. [deletemin ] deleteMin #6: ckey=15 real=15
+   37. [sift      ] [INTERMEDIO] Pre-sift: estructura antes de recolectar.
+   38. [sift      ] Post-sift: items recolectados.
+   39. [deletemin ] deleteMin #7: ckey=19 real=19
+   40. [sift      ] [INTERMEDIO] Pre-sift: estructura antes de recolectar.
+   41. [sift      ] Post-sift: items recolectados.
+   42. [deletemin ] deleteMin #8: ckey=23 real=23
+   43. [state     ] Tras 8 extracciones. Estructura restante.
