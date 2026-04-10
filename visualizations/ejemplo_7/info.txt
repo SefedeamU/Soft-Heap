@@ -1,0 +1,19 @@
+Ejemplo 7: Prim en Grafo Pequeno (epsilon=0.5)
+============================================================
+Epsilon: 0.5
+Threshold T: 1
+Total de pasos: 12
+
+Pasos:
+    1. [state     ] Prim: Iniciando en nodo origen 0. Insertamos (peso 0, nodo 0).
+    2. [deletemin ] Prim: extrae nodo 0 (peso de arista 0)
+    3. [insert    ] Prim: insertando arista hacia nodo 1 (peso 10)
+    4. [insert    ] Prim: insertando arista hacia nodo 2 (peso 5)
+    5. [deletemin ] Prim: extrae nodo 2 (peso de arista 5)
+    6. [insert    ] Prim: insertando arista hacia nodo 1 (peso 2)
+    7. [insert    ] Prim: insertando arista hacia nodo 3 (peso 8)
+    8. [deletemin ] Prim: extrae nodo 1 (peso de arista 2) [CORROMPIDO]
+    9. [insert    ] Prim: insertando arista hacia nodo 3 (peso 1)
+   10. [deletemin ] Prim: extrae nodo 3 (peso de arista 1)
+   11. [deletemin ] Prim: extrae nodo 3 (peso de arista 8)
+   12. [deletemin ] Prim: extrae nodo 1 (peso de arista 10)

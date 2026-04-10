@@ -1,0 +1,13 @@
+Ejemplo 6: Ejemplo Minimalista (epsilon=0.5, threshold=1)
+============================================================
+Epsilon: 0.5
+Threshold T: 1
+Total de pasos: 6
+
+Pasos:
+    1. [state     ] Estado inicial: Heap vacio. T=1
+    2. [insert    ] Tras insertar 10
+    3. [insert    ] Tras insertar 20
+    4. [insert    ] Tras insertar 5
+    5. [insert    ] Tras insertar 15
+    6. [deletemin ] deleteMin: extraido ckey=10, real=5 [CORROMPIDO]

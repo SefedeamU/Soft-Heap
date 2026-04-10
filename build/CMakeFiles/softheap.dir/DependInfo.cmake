@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/sefedeam/Proyectos/EDA/main.cpp" "CMakeFiles/softheap.dir/main.cpp.o" "gcc" "CMakeFiles/softheap.dir/main.cpp.o.d"
+  "C:/Users/30110/PycharmProjects/Soft-Heap/main.cpp" "CMakeFiles/softheap.dir/main.cpp.obj" "gcc" "CMakeFiles/softheap.dir/main.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -70,7 +70,7 @@ int main() {
                 }
             });
 
-            sh.insert(k);
+            sh.insert(k, k);
             sh.clearObserver();
 
             snap.nextStep();
@@ -105,7 +105,7 @@ int main() {
                 }
             });
 
-            auto [dck, drk, did] = sh.deleteMin();
+            auto [dck, drk, drv, did] = sh.deleteMin();
             sh.clearObserver();
 
             snap.nextStep();
@@ -113,6 +113,7 @@ int main() {
                 "deleteMin #" + to_string(i+1) +
                 ": ckey=" + to_string(dck) +
                 ", real=" + to_string(drk) +
+                ", vertex=" + to_string(drv) +
                 (dck > drk ? " [CORROMPIDO]" : " [limpio]"),
                 "deletemin", false, "delete");
         }
@@ -172,7 +173,7 @@ int main() {
                 }
             });
 
-            sh.insert(k);
+            sh.insert(k, k);
             sh.clearObserver();
 
             snap.nextStep();
@@ -186,7 +187,7 @@ int main() {
 
         // Extraer para ver el efecto
         for (int i = 0; i < 4; i++) {
-            auto [ck, rk, id] = sh.deleteMin();
+            auto [ck, rk, rv, id] = sh.deleteMin();
             snap.nextStep();
             string desc = "deleteMin #" + to_string(i+1) +
                           ": ckey=" + to_string(ck) +
@@ -217,14 +218,14 @@ int main() {
         snap.capture(sh1, "Heap 1 vacio");
 
         for (int k : {20, 5, 12, 17}) {
-            sh1.insert(k);
+            sh1.insert(k, k);
             snap.nextStep();
             snap.capture(sh1, "Heap1: insertar " + to_string(k), "insert");
         }
 
         // Construir Heap 2 (sin logging, solo resultado)
         for (int k : {15, 3, 8, 25}) {
-            sh2.insert(k);
+            sh2.insert(k, k);
         }
 
         snap.nextStep();
@@ -261,7 +262,7 @@ int main() {
 
         // Extraer todos
         while (!sh1.isEmpty()) {
-            auto [ck, rk, id] = sh1.deleteMin();
+            auto [ck, rk, rv, id] = sh1.deleteMin();
             snap.nextStep();
             snap.capture(sh1,
                 "deleteMin: ckey=" + to_string(ck) +
@@ -291,7 +292,7 @@ int main() {
 
         int keys[] = {50, 23, 7, 42, 15, 31, 3, 28, 19, 36, 11, 44, 6, 25, 38, 9};
         for (int k : keys) {
-            sh.insert(k);
+            sh.insert(k, k);
             snap.nextStep();
             snap.capture(sh, "Insertar " + to_string(k), "insert", false, "insert");
         }
@@ -313,7 +314,7 @@ int main() {
                 }
             });
 
-            auto [ck, rk, id] = sh.deleteMin();
+            auto [ck, rk, rv, id] = sh.deleteMin();
             sh.clearObserver();
 
             snap.nextStep();
@@ -343,7 +344,7 @@ int main() {
 
         int keys[] = {30, 10, 50, 20, 40, 5, 35, 15, 45, 25};
         for (int k : keys) {
-            sh.insert(k);
+            sh.insert(k, k);
             snap.nextStep();
             snap.capture(sh, "Insertar " + to_string(k), "insert", false, "insert");
         }
@@ -354,7 +355,7 @@ int main() {
         string order = "Orden de extraccion (ckey->real): ";
         bool first = true;
         while (!sh.isEmpty()) {
-            auto [ck, rk, id] = sh.deleteMin();
+            auto [ck, rk, rv, id] = sh.deleteMin();
             if (ck == -1) break;
 
             if (!first) order += ", ";
@@ -371,6 +372,130 @@ int main() {
 
         snap.nextStep();
         snap.capture(sh, order);
+    }
+
+    // ================================================================
+    //  EJEMPLO 6: Minimalista paso a paso (ε = 0.5, T = 1)
+    // ================================================================
+    // Con T=1, cualquier nodo con rango > 1 hará double sift.
+    // Solo insertaremos 4 elementos para forzar la creación de un nodo
+    // de rango 2 y ver la corrupción en acción rápidamente.
+    {
+        Node::resetIds(); Item::resetIds();
+        SoftHeap sh(0.5); // T = 1
+        SnapshotLogger snap(6, "Ejemplo Minimalista (epsilon=0.5, threshold=1)", log);
+
+        snap.nextStep();
+        snap.capture(sh, "Estado inicial: Heap vacio. T=1");
+
+        // Insertamos 4 elementos
+        int keys[] = {10, 20, 5, 15};
+        for (int k : keys) {
+            // Recuerda que ahora insertamos (peso, vertice)
+            sh.insert(k, k); 
+            snap.nextStep();
+            snap.capture(sh, "Tras insertar " + to_string(k), "insert");
+        }
+
+        // Hacemos una extracción para forzar el sift y ver el desmantelamiento
+        auto [ck, rk, v, id] = sh.deleteMin();
+        snap.nextStep();
+        
+        string desc = "deleteMin: extraido ckey=" + to_string(ck) + ", real=" + to_string(rk);
+        if (ck > rk) desc += " [CORROMPIDO]";
+        
+        snap.capture(sh, desc, "deletemin");
+    }
+
+    // ================================================================
+    //  EJEMPLO 7: Prim paso a paso con Grafo Pequeño (ε = 0.5)
+    // ================================================================
+    {
+        Node::resetIds(); Item::resetIds();
+        SoftHeap sh(0.5); // T=1
+        SnapshotLogger snap(7, "Prim en Grafo Pequeno (epsilon=0.5)", log);
+        
+        // Grafo de 4 nodos:
+        // 0 --(10)-- 1
+        // | \        |
+        //(5) \       |(1)
+        // |   \      |
+        // 2 --(2)--- 3
+        struct SmallEdge { int to, weight; };
+        vector<vector<SmallEdge>> adj(4);
+        adj[0] = {{1, 10}, {2, 5}};
+        adj[1] = {{0, 10}, {2, 2}, {3, 1}};
+        adj[2] = {{0, 5}, {1, 2}, {3, 8}};
+        adj[3] = {{1, 1}, {2, 8}};
+
+        vector<bool> visited(4, false);
+
+        snap.nextStep();
+        snap.capture(sh, "Prim: Iniciando en nodo origen 0. Insertamos (peso 0, nodo 0).");
+
+        sh.insert(0, 0); 
+
+        while(!sh.isEmpty()){
+            auto [ck, rk, u, id] = sh.deleteMin();
+            if(ck == -1) break;
+
+            snap.nextStep();
+            snap.capture(sh, "Prim: extrae nodo " + to_string(u) + " (peso de arista " + to_string(rk) + ")" + (ck > rk ? " [CORROMPIDO]" : ""), "deletemin");
+
+            if(visited[u]) continue;
+            visited[u] = true;
+
+            for(auto edge : adj[u]){
+                if(!visited[edge.to]){
+                    sh.insert(edge.weight, edge.to); // PRIM: inserta solo el PESO
+                    snap.nextStep();
+                    snap.capture(sh, "Prim: insertando arista hacia nodo " + to_string(edge.to) + " (peso " + to_string(edge.weight) + ")", "insert");
+                }
+            }
+        }
+    }
+
+    // ================================================================
+    //  EJEMPLO 8: Dijkstra paso a paso con Grafo Pequeño (ε = 0.5)
+    // ================================================================
+    {
+        Node::resetIds(); Item::resetIds();
+        SoftHeap sh(0.5); // T=1
+        SnapshotLogger snap(8, "Dijkstra en Grafo Pequeno (epsilon=0.5)", log);
+        
+        struct SmallEdge { int to, weight; };
+        vector<vector<SmallEdge>> adj(4);
+        adj[0] = {{1, 10}, {2, 5}};
+        adj[1] = {{0, 10}, {2, 2}, {3, 1}};
+        adj[2] = {{0, 5}, {1, 2}, {3, 8}};
+        adj[3] = {{1, 1}, {2, 8}};
+
+        vector<int> dist(4, 999999);
+
+        snap.nextStep();
+        snap.capture(sh, "Dijkstra: Iniciando en nodo origen 0. Insertamos (dist 0, nodo 0).");
+
+        dist[0] = 0;
+        sh.insert(0, 0);
+
+        while(!sh.isEmpty()){
+            auto [ck, rk, u, id] = sh.deleteMin();
+            if(ck == -1) break;
+
+            snap.nextStep();
+            snap.capture(sh, "Dijkstra: extrae nodo " + to_string(u) + " (dist acumulada " + to_string(rk) + ")" + (ck > rk ? " [CORROMPIDO]" : ""), "deletemin");
+
+            if(rk > dist[u]) continue;
+
+            for(auto edge : adj[u]){
+                if(dist[u] + edge.weight < dist[edge.to]){
+                    dist[edge.to] = dist[u] + edge.weight;
+                    sh.insert(dist[edge.to], edge.to); // DIJKSTRA: inserta la DISTANCIA TOTAL ACUMULADA
+                    snap.nextStep();
+                    snap.capture(sh, "Dijkstra: insertando camino hacia nodo " + to_string(edge.to) + " (distancia total " + to_string(dist[edge.to]) + ")", "insert");
+                }
+            }
+        }
     }
 
     // ===================== Salida NDJSON =====================

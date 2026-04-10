@@ -50,9 +50,10 @@
 
 struct Item {
     int key;    // clave original (verdadera, nunca cambia)
+    int vertex; // opcional: para aplicaciones como MST
     int id;     // identificador único
 
-    Item(int k) : key(k), id(nextId()) {}
+    Item(int k, int v) : key(k), vertex(v), id(nextId()) {}
 
     static void resetIds() { idCounter() = 1; }
 
@@ -85,10 +86,10 @@ struct Node {
     std::list<Item> items;
 
     // Nodo hoja: contiene un solo item con la clave dada
-    Node(int key)
+    Node(int key, int vertex)
         : id(nextId()), ckey(key), rank(0),
           left(nullptr), right(nullptr) {
-        items.emplace_back(key);
+        items.emplace_back(key, vertex);
     }
 
     // Nodo interno: resultado de link, inicialmente sin items
@@ -341,8 +342,8 @@ public:
     //  Si hay árboles del mismo rango, los combina (link).
     //  Tiempo amortizado: O(1) para ε constante.
     // ==========================================================
-    void insert(int key) {
-        Node* leaf = new Node(key);
+    void insert(int key, int vertex) {
+        Node* leaf = new Node(key, vertex);
 
         HeadNode* newHead = new HeadNode(leaf);
         newHead->rank = 0;
@@ -382,12 +383,12 @@ public:
     //  o elimina el árbol si no quedan items.
     //  Tiempo amortizado: O(log(1/ε))
     // ==========================================================
-    std::tuple<int,int,int> deleteMin() {
-        if (!head_) return {-1, -1, -1};
+    std::tuple<int,int,int,int> deleteMin() {
+        if (!head_) return {-1, -1, -1, -1};
 
         HeadNode* minH = head_->sufmin;
         Node* root = minH->tree;
-        if (root->items.empty()) return {-1, -1, -1};
+        if (root->items.empty()) return {-1, -1, -1, -1};
 
         // Guardar ckey ANTES de cualquier modificación
         int reportedCkey = root->ckey;
@@ -412,7 +413,7 @@ public:
             updateSufmin();
         }
 
-        return {reportedCkey, extracted.key, extracted.id};
+        return {reportedCkey, extracted.key, extracted.vertex, extracted.id};
     }
 
     // ==========================================================

@@ -29,8 +29,23 @@ Estructura de carpetas:
     Epsilon: 0.2
     Pasos:   23 (0 intermedios)
 
+  ejemplo_6/
+    Titulo:  Ejemplo Minimalista (epsilon=0.5, threshold=1)
+    Epsilon: 0.5
+    Pasos:   6 (0 intermedios)
 
-Total de imagenes generadas: 165
+  ejemplo_7/
+    Titulo:  Prim en Grafo Pequeno (epsilon=0.5)
+    Epsilon: 0.5
+    Pasos:   12 (0 intermedios)
+
+  ejemplo_8/
+    Titulo:  Dijkstra en Grafo Pequeno (epsilon=0.5)
+    Epsilon: 0.5
+    Pasos:   12 (0 intermedios)
+
+
+Total de imagenes generadas: 195
 
 Convenciones de color:
   - Fondo BLANCO: paso final (estado estable)

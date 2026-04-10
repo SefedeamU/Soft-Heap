@@ -341,7 +341,7 @@ def add_node_to_graph(g, node, colors, highlight_nodes, is_root=False):
 
     g.node(nid, label=label, shape="box", style="filled,rounded",
            fillcolor=fill, color=border, penwidth=penwidth,
-           fontname="Helvetica")
+           fontname="Arial")
 
 
 def add_tree_edges(g, node, node_index, colors, highlight_edges, is_intermediate):
@@ -366,7 +366,7 @@ def add_tree_edges(g, node, node_index, colors, highlight_edges, is_intermediate
                color=edge_color, style=edge_style,
                penwidth=edge_width,
                fontcolor=edge_color,
-               fontname="Helvetica")
+               fontname="Arial")
 
         if child_id in node_index:
             add_tree_edges(g, node_index[child_id], node_index,
@@ -393,14 +393,14 @@ def render_snapshot(snap, output_path):
             "ranksep": "0.8",
             "dpi": "150",
             "label": "",
-            "fontname": "Helvetica",
+            "fontname": "Arial",
         },
         node_attr={
-            "fontname": "Helvetica",
+            "fontname": "Arial",
             "fontsize": "11",
         },
         edge_attr={
-            "fontname": "Helvetica",
+            "fontname": "Arial",
             "fontsize": "10",
         }
     )
@@ -430,7 +430,7 @@ def render_snapshot(snap, output_path):
     g.attr(label=f"{title_wrapped}\\n{stats_text}",
            labelloc="t", fontsize="14",
            fontcolor=colors["title_color"],
-           fontname="Helvetica Bold")
+           fontname="Arial Bold")
 
     trees = snap.get("trees", [])
     node_index = build_node_index(trees)
@@ -439,14 +439,14 @@ def render_snapshot(snap, output_path):
     if not trees:
         g.node("empty", label="<Heap vacio>",
                shape="plaintext", fontsize="16",
-               fontcolor="#95A5A6", fontname="Helvetica Italic")
+               fontcolor="#95A5A6", fontname="Arial Italic")
     else:
         for ti, tree in enumerate(trees):
             with g.subgraph(name=f"cluster_tree_{ti}") as sg:
                 sg.attr(style="dashed", color=colors["root_link"],
                         label=f"Arbol {ti + 1} (rank={tree['nodes'][0]['rank'] if tree['nodes'] else '?'})",
                         fontsize="10", fontcolor=colors["root_link"],
-                        fontname="Helvetica")
+                        fontname="Arial")
 
                 for node in tree.get("nodes", []):
                     is_root = node["id"] == tree.get("root_id", -1)
@@ -466,24 +466,24 @@ def render_snapshot(snap, output_path):
     # Leyenda
     with g.subgraph(name="cluster_legend") as lg:
         lg.attr(style="filled", color="#EAECEE", fillcolor="#FDFEFE",
-                label="Leyenda", fontsize="10", fontname="Helvetica Bold",
+                label="Leyenda", fontsize="10", fontname="Arial Bold",
                 fontcolor="#566573")
 
         lg.node("leg_clean", label="Item limpio (ckey == key)",
                 shape="box", style="filled", fillcolor="#D5F5E3",
                 fontcolor=colors["item_clean"], fontsize="9",
-                fontname="Helvetica", width="0", height="0")
+                fontname="Arial", width="0", height="0")
 
         lg.node("leg_corrupt", label="Item corrompido (ckey > key) [C]",
                 shape="box", style="filled", fillcolor="#FADBD8",
                 fontcolor=colors["item_corrupted"], fontsize="9",
-                fontname="Helvetica", width="0", height="0")
+                fontname="Arial", width="0", height="0")
 
         lg.node("leg_hl", label="Nodo destacado (operacion actual)",
                 shape="box", style="filled",
                 fillcolor=colors["highlight_fill"],
                 color=colors["highlight_border"],
-                fontsize="9", fontname="Helvetica", width="0", height="0")
+                fontsize="9", fontname="Arial", width="0", height="0")
 
         if is_intermediate:
             lg.node("leg_inter",
@@ -491,7 +491,7 @@ def render_snapshot(snap, output_path):
                     shape="box", style="filled",
                     fillcolor=INTERMEDIATE_COLORS["bg"],
                     color=INTERMEDIATE_COLORS["node_border"],
-                    fontsize="9", fontname="Helvetica", width="0", height="0")
+                    fontsize="9", fontname="Arial", width="0", height="0")
 
         lg.edge("leg_clean", "leg_corrupt", style="invis")
         lg.edge("leg_corrupt", "leg_hl", style="invis")

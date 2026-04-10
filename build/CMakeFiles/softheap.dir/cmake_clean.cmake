@@ -1,7 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/softheap.dir/main.cpp.o"
-  "CMakeFiles/softheap.dir/main.cpp.o.d"
-  "softheap"
+  "CMakeFiles/softheap.dir/main.cpp.obj"
+  "CMakeFiles/softheap.dir/main.cpp.obj.d"
+  "libsoftheap.dll.a"
+  "softheap.exe"
+  "softheap.exe.manifest"
   "softheap.pdb"
 )
 

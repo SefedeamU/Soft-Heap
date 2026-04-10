@@ -39,10 +39,10 @@ Pasos:
    32. [findmin   ] findMin: ckey=1, real=1 [limpio]
    33. [sift      ] [INTERMEDIO] Nodo raiz quedo vacio. Pre-sift: estructura actual.
    34. [sift      ] Post-sift: items recolectados de hijos.
-   35. [deletemin ] deleteMin #1: ckey=1, real=1 [limpio]
+   35. [deletemin ] deleteMin #1: ckey=1, real=1, vertex=1 [limpio]
    36. [sift      ] [INTERMEDIO] Nodo raiz quedo vacio. Pre-sift: estructura actual.
    37. [sift      ] Post-sift: items recolectados de hijos.
-   38. [deletemin ] deleteMin #2: ckey=2, real=2 [limpio]
+   38. [deletemin ] deleteMin #2: ckey=2, real=2, vertex=2 [limpio]
    39. [sift      ] [INTERMEDIO] Nodo raiz quedo vacio. Pre-sift: estructura actual.
    40. [sift      ] Post-sift: items recolectados de hijos.
-   41. [deletemin ] deleteMin #3: ckey=4, real=4 [limpio]
+   41. [deletemin ] deleteMin #3: ckey=4, real=4, vertex=4 [limpio]

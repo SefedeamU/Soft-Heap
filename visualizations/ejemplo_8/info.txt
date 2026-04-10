@@ -1,0 +1,19 @@
+Ejemplo 8: Dijkstra en Grafo Pequeno (epsilon=0.5)
+============================================================
+Epsilon: 0.5
+Threshold T: 1
+Total de pasos: 12
+
+Pasos:
+    1. [state     ] Dijkstra: Iniciando en nodo origen 0. Insertamos (dist 0, nodo 0).
+    2. [deletemin ] Dijkstra: extrae nodo 0 (dist acumulada 0)
+    3. [insert    ] Dijkstra: insertando camino hacia nodo 1 (distancia total 10)
+    4. [insert    ] Dijkstra: insertando camino hacia nodo 2 (distancia total 5)
+    5. [deletemin ] Dijkstra: extrae nodo 2 (dist acumulada 5)
+    6. [insert    ] Dijkstra: insertando camino hacia nodo 1 (distancia total 7)
+    7. [insert    ] Dijkstra: insertando camino hacia nodo 3 (distancia total 13)
+    8. [deletemin ] Dijkstra: extrae nodo 1 (dist acumulada 7) [CORROMPIDO]
+    9. [insert    ] Dijkstra: insertando camino hacia nodo 3 (distancia total 8)
+   10. [deletemin ] Dijkstra: extrae nodo 3 (dist acumulada 8)
+   11. [deletemin ] Dijkstra: extrae nodo 1 (dist acumulada 10)
+   12. [deletemin ] Dijkstra: extrae nodo 3 (dist acumulada 13)

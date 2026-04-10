@@ -1,3 +1,3 @@
-/home/sefedeam/Proyectos/EDA/build/CMakeFiles/softheap.dir
-/home/sefedeam/Proyectos/EDA/build/CMakeFiles/edit_cache.dir
-/home/sefedeam/Proyectos/EDA/build/CMakeFiles/rebuild_cache.dir
+C:/Users/30110/PycharmProjects/Soft-Heap/build/CMakeFiles/softheap.dir
+C:/Users/30110/PycharmProjects/Soft-Heap/build/CMakeFiles/edit_cache.dir
+C:/Users/30110/PycharmProjects/Soft-Heap/build/CMakeFiles/rebuild_cache.dir
